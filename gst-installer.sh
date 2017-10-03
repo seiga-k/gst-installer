@@ -4,10 +4,15 @@ set -e
 printf "password: "
 read password
 
+srcbranch="origin/1.12"
+
+mkdir gst
+cd gst
+
 echo "$password" | sudo -S apt install bison flex autoconf liborc*
 git clone https://github.com/GStreamer/gstreamer.git
 cd gstreamer
-git checkout origin/1.12
+git checkout ${srcbranch}
 ./autogen.sh
 ./configure
 make -j4
@@ -17,7 +22,7 @@ cd ../
 
 git clone https://github.com/GStreamer/gst-plugins-base.git
 cd gst-plugins-base
-git checkout origin/1.12
+git checkout ${srcbranch}
 ./autogen.sh
 ./configure
 make -j4
@@ -27,7 +32,7 @@ cd ../
 echo "$password" | sudo -S apt install libjpeg-dev libvpx-dev
 git clone https://github.com/GStreamer/gst-plugins-good.git
 cd gst-plugins-good
-git checkout origin/1.12
+git checkout ${srcbranch}
 ./autogen.sh
 ./configure
 make -j4
@@ -37,7 +42,7 @@ cd ../
 echo "$password" | sudo -S apt install x265
 git clone https://github.com/GStreamer/gst-plugins-bad.git
 cd gst-plugins-bad
-git checkout origin/1.12
+git checkout ${srcbranch}
 ./autogen.sh
 ./configure
 make -j4
@@ -47,7 +52,7 @@ cd ../
 echo "$password" | sudo -S apt install libx264-dev libmpg123-dev
 git clone https://github.com/GStreamer/gst-plugins-ugly.git
 cd gst-plugins-ugly
-git checkout origin/1.12
+git checkout ${srcbranch}
 ./autogen.sh
 ./configure
 make -j4
@@ -56,7 +61,7 @@ cd ../
 
 git clone https://github.com/GStreamer/gst-libav.git
 cd gst-libav
-git checkout origin/1.12
+git checkout ${srcbranch}
 ./autogen.sh
 ./configure
 make -j4
@@ -65,7 +70,7 @@ cd ../
 
 git clone https://anongit.freedesktop.org/git/gstreamer/gst-ffmpeg.git
 cd gst-ffmpeg
-git checkout origin/1.12
+git checkout ${srcbranch}
 ./autogen.sh
 ./configure
 make -j4
@@ -74,7 +79,7 @@ cd ../
 
 git clone https://github.com/GStreamer/gst-rtsp-server.git
 cd gst-rtsp-server
-git checkout origin/1.12
+git checkout ${srcbranch}
 ./autogen.sh
 ./configure
 make -j4
@@ -83,7 +88,7 @@ cd ../
 
 git clone https://github.com/GStreamer/gst-omx.git
 cd gst-omx
-git checkout origin/1.12
+git checkout ${srcbranch}
 ./autogen.sh
 LIBS="$LIBS -L/usr/loca/lib" \
 LDFLAGS='-L/opt/vc/lib -lGLESv2 -lbcm_host -lEGL -lm -lstdc++' \
