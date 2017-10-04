@@ -12,8 +12,8 @@ then
 	rm -rf ${workpath}
 fi
 
-mkdir gst
-cd gst
+mkdir ${workpath}
+cd ${workpath}
 
 export LIB="$LIB ${libpath}"
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
