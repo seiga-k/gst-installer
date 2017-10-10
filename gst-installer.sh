@@ -20,7 +20,7 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
 
 set -e
 
-echo "$password" | sudo -S apt install bison flex autoconf liborc*
+echo "$password" | sudo -S apt install -y bison flex autoconf liborc*
 
 git clone https://github.com/GStreamer/gstreamer.git
 cd gstreamer
@@ -44,7 +44,7 @@ echo "$password" | sudo -S make install
 echo "$password" | sudo -S ldconfig
 cd ../
 
-echo "$password" | sudo -S apt install libjpeg-dev libvpx-dev
+echo "$password" | sudo -S apt install -y libjpeg-dev libvpx-dev
 git clone https://github.com/GStreamer/gst-plugins-good.git
 cd gst-plugins-good
 git checkout ${srcbranch}
@@ -55,7 +55,7 @@ echo "$password" | sudo -S make install
 echo "$password" | sudo -S ldconfig
 cd ../
 
-echo "$password" | sudo -S apt install x265
+echo "$password" | sudo -S apt install -y x265
 git clone https://github.com/GStreamer/gst-plugins-bad.git
 cd gst-plugins-bad
 git checkout ${srcbranch}
@@ -66,7 +66,7 @@ echo "$password" | sudo -S make install
 echo "$password" | sudo -S ldconfig
 cd ../
 
-echo "$password" | sudo -S apt install libx264-dev libmpg123-dev
+echo "$password" | sudo -S apt install -y libx264-dev libmpg123-dev
 git clone https://github.com/GStreamer/gst-plugins-ugly.git
 cd gst-plugins-ugly
 git checkout ${srcbranch}
